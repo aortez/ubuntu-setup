@@ -9,6 +9,9 @@ sudo apt-get install git
 sudo apt-get install gnome-session-flashback
 gsettings set org.gnome.desktop.default-applications.terminal exec 'mate-terminal'
 
+# make alt-right-drag resize windows
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+
 # move buttons to right
 gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 
