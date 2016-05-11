@@ -1,6 +1,6 @@
 # we _need_ this stuff
 
-sudo apt-get install vim git gitk gnome-session-flashback multitail
+sudo apt-get install vim git gitk gnome-session-flashback multitail meld
 
 # install mate-terminal (to restore the lost 'change title' functionality)
 # and make it the default
