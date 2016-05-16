@@ -16,3 +16,8 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize
 
 # restore normal scrollbars
 gsettings set com.canonical.desktop.interface scrollbar-mode normal
+
+# install oracle java?
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java<X>-installer
