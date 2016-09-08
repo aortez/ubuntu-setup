@@ -21,3 +21,6 @@ gsettings set com.canonical.desktop.interface scrollbar-mode normal
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java<X>-installer
+
+# kill that login sound file
+sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
