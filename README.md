@@ -24,3 +24,7 @@ sudo apt-get install oracle-java<X>-installer
 
 # kill that login sound file
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
+
+# add this to your .bashrc to display git branch and status in the prompt
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export GIT_PS1_SHOWDIRTYSTATE=1
