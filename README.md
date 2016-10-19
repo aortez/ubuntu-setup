@@ -32,7 +32,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # add this to .bashrc to add "set title" functionality, e.g.
 # $ st yay
 # will set your terminal title to "yay"
-set_title()
+st() # st = "set title" 
 {
 ORIG=$PS1
 TITLE="\e]2;$*\a"
