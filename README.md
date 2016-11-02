@@ -20,6 +20,14 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize
 # restore normal scrollbars
 gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
+# install shutter
+sudo apt-get install shutter
+# some manual steps for now...
+# disable default screenshot hotkeys
+# add 2 custom shortcut hotkeys
+# for full screen 'shutter -f' default key print scrn
+# for selection area 'shutter -s' default key shift-print scrn
+
 # install oracle java?
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
