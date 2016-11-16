@@ -20,6 +20,9 @@ gsettings set com.canonical.desktop.interface scrollbar-mode normal
 # install a taskbar resident alarm clock, useful for alarms and timers
 sudo apt-get install alarm-clock-applet
 
+# gotta have clusterssh
+sudo apt-get install clusterssh
+
 # install shutter
 sudo apt-get install shutter
 # some manual steps for now...
