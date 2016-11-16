@@ -40,13 +40,3 @@ sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-# add this to .bashrc to add "set title" functionality, e.g.
-# $ st yay
-# will set your terminal title to "yay"
-st() # st = "set title" 
-{
-ORIG=$PS1
-TITLE="\e]2;$*\a"
-PS1=${ORIG}${TITLE}
-}
-
