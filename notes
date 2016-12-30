@@ -23,6 +23,9 @@ sudo apt-get install alarm-clock-applet
 # gotta have clusterssh
 sudo apt-get install clusterssh
 
+# UI for setting monitor refresh rate, very nice!
+sudo apt-get install lxrandr
+
 # install shutter
 sudo apt-get install shutter
 # some manual steps for now...
