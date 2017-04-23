@@ -54,3 +54,6 @@ sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
 # constrain ssh to specific user(s)
 # add to /etc/ssh/sshd_config
 AllowUsers oldman
+
+# fix missing ethernet 'device not managed'
+sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf  
