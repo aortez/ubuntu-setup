@@ -1,5 +1,5 @@
 # we _need_ this stuff
-sudo apt-get install vim git gitk gnome-session-flashback multitail meld
+sudo apt-get install vim git gitk gnome-session-flashback multitail meld keepass2 compizconfig-settings-manager compiz-plugins-extra nmon
 
 # re-add the option to disable tap-to-click in ubuntu 17.04
 sudo apt-get install xserver-xorg-input-libinput
