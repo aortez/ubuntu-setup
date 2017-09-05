@@ -1,6 +1,10 @@
 # we _need_ this stuff
 sudo apt-get install vim git gitk gnome-session-flashback multitail meld
 
+# re-add the option to disable tap-to-click in ubuntu 17.04
+sudo apt-get install xserver-xorg-input-libinput
+sudo apt-get remove xserver-xorg-input-synaptics
+
 # TODO: is there a way to make gnome flashback the default session?
 
 # install mate-terminal (to restore the lost 'change title' functionality)
