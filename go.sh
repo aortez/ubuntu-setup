@@ -24,6 +24,7 @@ echo "Installing packages..."
 
 declare -a PACKAGES=(
 "alarm-clock-applet"
+"amarok"
 "atom"
 "compiz-plugins-extra" 
 "compizconfig-settings-manager"
@@ -33,10 +34,13 @@ declare -a PACKAGES=(
 "keepass2"
 "gnome-session-flashback" 
 "lxrandr"
+"mpg321"
 "multitail"
 "meld"
 "mate-terminal"
 "nmon"
+"node"
+"npm"
 "shutter"
 "vim" 
 )
