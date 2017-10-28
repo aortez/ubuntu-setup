@@ -26,6 +26,7 @@ declare -a PACKAGES=(
 "alarm-clock-applet"
 "amarok"
 "atom"
+"build-essential"
 "compiz-plugins-extra" 
 "compizconfig-settings-manager"
 "clusterssh"
@@ -39,8 +40,6 @@ declare -a PACKAGES=(
 "meld"
 "mate-terminal"
 "nmon"
-"node"
-"npm"
 "shutter"
 "vim" 
 )
@@ -54,17 +53,19 @@ set -x
 sudo apt-get install -y $PACKAGES_STRING
 set +x
 
+echo "*********"
+echo "update apt-repo so we can install from ppas"
+sudo apt-get update
+
 echo " "
 echo "*********"
 echo "Install oracle Java 7 and 8"
-exit 0
 #sudo apt-get install -y oracle-java7-installer
-#sudo apt-get install -y oracle-java8-installer
+sudo apt-get install -y oracle-java8-installer
 
 
 echo "*********"
 echo "Install atom"
-sudo add-apt-repository -y ppa:webupd8team/atom 
 sudo apt-get update
 sudo apt-get install -y atom
 
