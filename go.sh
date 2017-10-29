@@ -69,6 +69,15 @@ echo "Install atom"
 sudo apt-get update
 sudo apt-get install -y atom
 
+
+echo "**********"
+echo "Install node and npm"
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+echo "Install Angular CLI"
+sudo npm install -g @angular/cli
+
+
 echo "**********"
 echo "Setting some defaults..."
 # some manual steps for now...
