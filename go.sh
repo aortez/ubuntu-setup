@@ -39,6 +39,7 @@ declare -a PACKAGES=(
 "multitail"
 "meld"
 "mate-terminal"
+"maven"
 "nmon"
 "shutter"
 "vim" 
