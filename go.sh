@@ -1,6 +1,5 @@
 #!/bin/bash
-set -euf -o pipefail 
-
+set -euf -o pipefail
 
 declare -a PPAS=(
 "ppa:webupd8team/java"
@@ -27,13 +26,13 @@ declare -a PACKAGES=(
 "amarok"
 "atom"
 "build-essential"
-"compiz-plugins-extra" 
+"compiz-plugins-extra"
 "compizconfig-settings-manager"
 "clusterssh"
-"git" 
+"git"
 "gitk"
 "keepass2"
-"gnome-session-flashback" 
+"gnome-session-flashback"
 "lxrandr"
 "mpg321"
 "multitail"
@@ -42,7 +41,7 @@ declare -a PACKAGES=(
 "maven"
 "nmon"
 "shutter"
-"vim" 
+"vim"
 )
 PACKAGES_STRING=""
 for P in "${PACKAGES[@]}"
@@ -78,6 +77,21 @@ sudo apt-get install -y nodejs
 echo "Install Angular CLI"
 sudo npm install -g @angular/cli
 
+echo "**********"
+echo "Installing Eclipse..."
+ECLIPSE_HOME=~/.progs/eclipse
+if [ -d "$ECLIPSE_HOME" ]; then
+	echo "Found existing directory at $ECLIPSE_HOME, eclipse already installed!"
+else
+	echo "fetching package and unarchiving"
+	mkdir -p tmp
+	cd tmp
+	wget -N http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/1a/eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
+	tar zxvf eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
+	echo "deploying to target directory"
+	mkdir -p ~/.progs/
+	mv eclipse ~/.progs/
+fi
 
 echo "**********"
 echo "Setting some defaults..."
@@ -103,4 +117,3 @@ gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
 echo "Kill that login sound file"
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
-
