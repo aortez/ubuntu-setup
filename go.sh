@@ -16,6 +16,10 @@ do
 	set +x
 done
 
+echo "*********"
+echo "update apt-repo so we can install from ppas"
+sudo apt-get update
+
 echo " "
 echo "***********"
 echo "Installing packages..."
@@ -28,6 +32,7 @@ declare -a PACKAGES=(
 "build-essential"
 "compiz-plugins-extra"
 "compizconfig-settings-manager"
+"curl"
 "clusterssh"
 "git"
 "gitk"
@@ -53,22 +58,11 @@ set -x
 sudo apt-get install -y $PACKAGES_STRING
 set +x
 
-echo "*********"
-echo "update apt-repo so we can install from ppas"
-sudo apt-get update
-
 echo " "
 echo "*********"
 echo "Install oracle Java 7 and 8"
 #sudo apt-get install -y oracle-java7-installer
 sudo apt-get install -y oracle-java8-installer
-
-
-echo "*********"
-echo "Install atom"
-sudo apt-get update
-sudo apt-get install -y atom
-
 
 echo "**********"
 echo "Install node and npm"
