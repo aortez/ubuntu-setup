@@ -44,6 +44,7 @@ declare -a PACKAGES=(
 "meld"
 "mate-terminal"
 "maven"
+"mysql-client-core-5.7"
 "nmon"
 "shutter"
 "vim"
