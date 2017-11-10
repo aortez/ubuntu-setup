@@ -110,5 +110,17 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize
 echo "restore normal scrollbars"
 gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
+# set a bunch of nice window movement hotkeys
+gsettings set org.gnome.desktop.wm.keybindings move-to-corner-ne "['<Control><Super>KP_Page_Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-corner-nw "['<Control><Super>KP_Home']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-corner-se "['<Control><Super>KP_Page_Down']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-corner-sw "['<Control><Super>KP_End']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Control><Super>KP_Begin']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-side-n "['<Control><Super>KP_Up','<Control><Super>Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-side-s "['<Control><Super>KP_Down','<Control><Super>Down']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-side-w "['<Control><Super>KP_Left','<Control><Super>Left']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
+
+
 echo "Kill that login sound file"
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
