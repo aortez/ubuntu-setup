@@ -37,7 +37,7 @@ declare -a PACKAGES=(
 "git"
 "gitk"
 "keepass2"
-"gnome-session-flashback"
+#"gnome-session-flashback"
 "lxrandr"
 "mpg321"
 "multitail"
@@ -98,29 +98,44 @@ echo "Setting some defaults..."
 
 # TODO: is there a way to make gnome flashback the default session?
 
-echo "make mate-terminal the default (to restore the lost 'change title' functionality)"
-gsettings set org.gnome.desktop.default-applications.terminal exec 'mate-terminal'
+#echo "make mate-terminal the default (to restore the lost 'change title' functionality)"
+#gsettings set org.gnome.desktop.default-applications.terminal exec 'mate-terminal'
 
-echo "make alt-right-drag resize windows"
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+#echo "make alt-right-drag resize windows"
+#gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
-echo "move buttons to right"
-gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
+#echo "move buttons to right"
+#gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 
-echo "restore normal scrollbars"
-gsettings set com.canonical.desktop.interface scrollbar-mode normal
+#echo "restore normal scrollbars"
+#gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
 # set a bunch of nice window movement hotkeys
-gsettings set org.gnome.desktop.wm.keybindings move-to-corner-ne "['<Control><Super>KP_Page_Up']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-corner-nw "['<Control><Super>KP_Home']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-corner-se "['<Control><Super>KP_Page_Down']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-corner-sw "['<Control><Super>KP_End']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Control><Super>KP_Begin']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-side-n "['<Control><Super>KP_Up','<Control><Super>Up']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-side-s "['<Control><Super>KP_Down','<Control><Super>Down']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-side-w "['<Control><Super>KP_Left','<Control><Super>Left']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-ne "['<Control><Super>KP_Page_Up']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-nw "['<Control><Super>KP_Home']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-se "['<Control><Super>KP_Page_Down']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-sw "['<Control><Super>KP_End']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Control><Super>KP_Begin']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-side-n "['<Control><Super>KP_Up','<Control><Super>Up']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-side-s "['<Control><Super>KP_Down','<Control><Super>Down']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-side-w "['<Control><Super>KP_Left','<Control><Super>Left']"
+#gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
 
 
 echo "Kill that login sound file"
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
+
+echo "Add shortcut to update/upgrade"
+sudo echo "#\!/bin/bash" > upd
+sudo echo "sudo apt-get update && sudo apt-get upgrade" >> upd
+sudo mv upd /usr/bin
+sudo chmod +x /usr/bin/upd
+
+echo "Install Chrome"
+pushd .
+mkdir -p tmp
+cd tmp
+wget -N https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+popd
+
