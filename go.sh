@@ -42,11 +42,10 @@ declare -a PACKAGES=(
 "mpg321"
 "multitail"
 "meld"
-"mate-terminal"
+#"mate-terminal"
 "maven"
 "mysql-client-core-5.7"
 "nmon"
-"shutter"
 "vim"
 )
 PACKAGES_STRING=""
@@ -121,11 +120,13 @@ echo "Setting some defaults..."
 #gsettings set org.gnome.desktop.wm.keybindings move-to-side-w "['<Control><Super>KP_Left','<Control><Super>Left']"
 #gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
 
+echo "Replace marco with compiz as the default window manager"
+gsettings set org.mate.session.required-components windowmanager compiz
 
 echo "Kill that login sound file"
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
 
-echo "Add shortcut to update/upgrade"
+echo "Add upd script"
 sudo echo "#\!/bin/bash" > upd
 sudo echo "sudo apt-get update && sudo apt-get upgrade" >> upd
 sudo mv upd /usr/bin
