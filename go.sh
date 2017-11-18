@@ -36,6 +36,7 @@ declare -a PACKAGES=(
 "clusterssh"
 "git"
 "gitk"
+"gnome-do"
 "keepass2"
 #"gnome-session-flashback"
 "lxrandr"
