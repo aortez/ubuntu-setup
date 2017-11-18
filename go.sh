@@ -37,6 +37,7 @@ declare -a PACKAGES=(
 "git"
 "gitk"
 "gnome-do"
+"jq"
 "keepass2"
 #"gnome-session-flashback"
 "lxrandr"
