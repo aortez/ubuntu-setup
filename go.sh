@@ -50,6 +50,7 @@ declare -a PACKAGES=(
 "maven"
 "mysql-client-core-5.7"
 "nmon"
+"speedcrunch"
 "vim"
 )
 PACKAGES_STRING=""
