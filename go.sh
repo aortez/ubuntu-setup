@@ -36,6 +36,7 @@ declare -a PACKAGES=(
 "clusterssh"
 "git"
 "gitk"
+"gimp"
 "gnome-do"
 "gparted"
 "jq"
