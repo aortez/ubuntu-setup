@@ -7,6 +7,10 @@ sudo apt-get remove xserver-xorg-input-synaptics
 
 # TODO: is there a way to make gnome flashback the default session?
 
+# TODO: install atom
+sudo add-apt-repository -y ppa:webupd8team/atom
+sudo apt-get update 
+
 # install mate-terminal (to restore the lost 'change title' functionality)
 # and make it the default
 sudo apt-get install mate-terminal
