@@ -43,8 +43,9 @@ sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java<X>-installer
 
-# kill that login sound file
+# kill that login sound file (s?)
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
+sudo mv /usr/share/sounds/ubuntu/stereo/system-ready{,-disabled}.ogg
 
 # add this to your .bashrc to display git branch and status in the prompt
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
