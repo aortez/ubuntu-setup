@@ -130,6 +130,7 @@ gsettings set org.mate.session.required-components windowmanager compiz
 
 echo "Kill that login sound file"
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
+sudo mv /usr/share/sounds/ubuntu/stereo/system-ready{,-disabled}.ogg
 
 echo "Add upd script"
 sudo echo "#\!/bin/bash" > upd
