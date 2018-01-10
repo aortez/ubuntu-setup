@@ -34,6 +34,7 @@ declare -a PACKAGES=(
 "compizconfig-settings-manager"
 "curl"
 "clusterssh"
+"dockey"
 "git"
 "gitk"
 "gimp"
