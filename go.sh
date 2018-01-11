@@ -34,6 +34,8 @@ declare -a PACKAGES=(
 "compizconfig-settings-manager"
 "curl"
 "clusterssh"
+"docker.io"
+"docker-compose"
 "git"
 "gitk"
 "gimp"
@@ -49,6 +51,7 @@ declare -a PACKAGES=(
 "mysql-client-core-5.7"
 "nmon"
 "speedcrunch"
+"synaptic"
 "vim"
 )
 PACKAGES_STRING=""
@@ -68,11 +71,29 @@ echo "Install oracle Java 7 and 8"
 sudo apt-get install -y oracle-java8-installer
 
 echo "**********"
-echo "Install node and npm"
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
+echo "Install node, npm, and yarn"
+echo "Install nvm"
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+# this stuff have a little bit of work to get straight...
+# need to figure out how to make nvm available so we can use it now to install node
+#echo "Install nodejs"
+#curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+#sudo apt-get install -y nodejs
 echo "Install Angular CLI"
 sudo npm install -g @angular/cli
+echo "Install yarn"
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
+sudo apt-get update && sudo apt-get install yarn
+
+
+echo "**********"
+echo "Add current user to docker group to allow sans-sudo usage"
+# add user to docker group so we can run docker as user (and not as sudo)
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+
 
 echo "**********"
 echo "Installing Eclipse..."
@@ -92,17 +113,6 @@ fi
 
 echo "**********"
 echo "Setting some defaults..."
-# some manual steps for now...
-# disable default screenshot hotkeys
-# add 2 custom shortcut hotkeys
-# for full screen 'shutter -f' default key print scrn
-# for selection area 'shutter -s' default key shift-print scrn
-
-# TODO: is there a way to make gnome flashback the default session?
-
-#echo "make mate-terminal the default (to restore the lost 'change title' functionality)"
-#gsettings set org.gnome.desktop.default-applications.terminal exec 'mate-terminal'
-
 #echo "make alt-right-drag resize windows"
 #gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
@@ -124,11 +134,13 @@ echo "Setting some defaults..."
 #gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
 
 echo "Replace marco with compiz as the default window manager"
-gsettings set org.mate.session.required-components windowmanager compiz
+#gsettings set org.mate.session.required-components windowmanager compiz
 
-echo "Kill that login sound file"
+echo "Kill those login sound files"
+set +e # don't fail if these files have already been moved
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
 sudo mv /usr/share/sounds/ubuntu/stereo/system-ready{,-disabled}.ogg
+set -e
 
 echo "Add upd script"
 sudo echo "#\!/bin/bash" > upd
@@ -137,10 +149,16 @@ sudo mv upd /usr/bin
 sudo chmod +x /usr/bin/upd
 
 echo "Install Chrome"
+set -x
 pushd .
 mkdir -p tmp
 cd tmp
 wget -N https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
+ls
+pwd
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 popd
 
+
+echo "****************************"
+echo "All done!"
