@@ -1,0 +1,8 @@
+# install packages
+sudo apt-get install docker.io docker-compose
+
+# add user to docker group so we can run docker as user (and not as sudo)
+sudo groupadd docker # is this needed? just wondering if the docker package adds this group or not
+sudo gpasswd -a ${USER} docker
+
+sudo service docker restart 
