@@ -70,21 +70,21 @@ echo "Install oracle Java 7 and 8"
 #sudo apt-get install -y oracle-java7-installer
 sudo apt-get install -y oracle-java8-installer
 
+
 echo "**********"
 echo "Install node, npm, and yarn"
 echo "Install nvm"
+# install for both the current and root users
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 # this stuff have a little bit of work to get straight...
 # need to figure out how to make nvm available so we can use it now to install node
 #echo "Install nodejs"
 #curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 #sudo apt-get install -y nodejs
-echo "Install Angular CLI"
-sudo npm install -g @angular/cli
 echo "Install yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 sudo sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
-sudo apt-get update && sudo apt-get install yarn
+sudo apt-get update && sudo apt-get -y install yarn
 
 
 echo "**********"
@@ -111,6 +111,7 @@ else
 	mv eclipse ~/.progs/
 fi
 
+
 echo "**********"
 echo "Setting some defaults..."
 #echo "make alt-right-drag resize windows"
@@ -134,10 +135,10 @@ echo "Setting some defaults..."
 #gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
 
 echo "Replace marco with compiz as the default window manager"
-#gsettings set org.mate.session.required-components windowmanager compiz
+gsettings set org.mate.session.required-components windowmanager compiz
 
 echo "Kill those login sound files"
-set +e # don't fail if these files have already been moved
+set +e # do not fail if these files have already been moved
 sudo mv /usr/share/sounds/ubuntu/stereo/desktop-login{,-disabled}.ogg
 sudo mv /usr/share/sounds/ubuntu/stereo/system-ready{,-disabled}.ogg
 set -e
