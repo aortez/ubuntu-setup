@@ -50,6 +50,7 @@ declare -a PACKAGES=(
 "maven"
 "mysql-client-core-5.7"
 "nmon"
+"shutter"
 "speedcrunch"
 "synaptic"
 "vim"
@@ -90,10 +91,11 @@ sudo apt-get update && sudo apt-get -y install yarn
 echo "**********"
 echo "Add current user to docker group to allow sans-sudo usage"
 # add user to docker group so we can run docker as user (and not as sudo)
+set +e
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 sudo service docker restart
-
+set -e
 
 echo "**********"
 echo "Installing Eclipse..."
