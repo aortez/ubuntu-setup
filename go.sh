@@ -147,7 +147,7 @@ set -e
 
 echo "Add upd script"
 sudo echo "#\!/bin/bash" > upd
-sudo echo "sudo apt-get update && sudo apt-get upgrade" >> upd
+sudo echo "sudo apt-get update ; sudo apt-get upgrade" >> upd
 sudo mv upd /usr/bin
 sudo chmod +x /usr/bin/upd
 
