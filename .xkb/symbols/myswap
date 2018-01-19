@@ -1,5 +1,6 @@
 partial modifier_keys
 xkb_symbols "swapit" {
     replace key <RCTL>  { [ End ] };
-    replace key <RALT> { [ Home ] };
+    replace key <RALT> { [ Home, Home ] };
 };
+
