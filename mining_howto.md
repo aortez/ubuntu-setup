@@ -1,9 +1,8 @@
 # Instructions
 1. First, we need to create a wallet.  One way it so use the program `geth`.  You can grab the newest version here:
-https://github.com/ethereum/go-ethereum/archive/v1.7.3.tar.gz
-geth is the "go-etherium miner" and I guess it can do CPU-based mining for you,
-however useless it may be these days.  However it can do other very valuable stuff
-also. I for
+        https://github.com/ethereum/go-ethereum/archive/v1.7.3.tar.gz
+`geth` is the "go-etherium miner", it can do CPU-based mining, which is too slow
+to do for profit.  However it can do other very valuable stuff also.
 2. Unarchive it somewhere.
 3. Run this command 'creating an account' to create your wallet
 https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts#creating-an-account
