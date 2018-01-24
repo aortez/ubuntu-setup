@@ -71,23 +71,6 @@ echo "Install oracle Java 7 and 8"
 #sudo apt-get install -y oracle-java7-installer
 sudo apt-get install -y oracle-java8-installer
 
-
-echo "**********"
-echo "Install node, npm, and yarn"
-echo "Install nvm"
-# install for both the current and root users
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-# this stuff have a little bit of work to get straight...
-# need to figure out how to make nvm available so we can use it now to install node
-#echo "Install nodejs"
-#curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-#sudo apt-get install -y nodejs
-echo "Install yarn"
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-sudo sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
-sudo apt-get update && sudo apt-get -y install yarn
-
-
 echo "**********"
 echo "Add current user to docker group to allow sans-sudo usage"
 # add user to docker group so we can run docker as user (and not as sudo)
