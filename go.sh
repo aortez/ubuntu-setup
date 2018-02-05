@@ -50,6 +50,7 @@ declare -a PACKAGES=(
 "maven"
 "mysql-client-core-5.7"
 "nmon"
+"postgresql-client-9.6"
 "postgresql-common"
 "redis-tools"
 "shutter"
