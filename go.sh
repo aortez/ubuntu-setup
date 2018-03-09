@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euf -o pipefail
+set -euo pipefail
 
 declare -a PPAS=(
 "ppa:webupd8team/java"
@@ -34,8 +34,6 @@ declare -a PACKAGES=(
 "compizconfig-settings-manager"
 "curl"
 "clusterssh"
-"docker.io"
-"docker-compose"
 "git"
 "gitk"
 "gimp"
@@ -73,15 +71,6 @@ echo "*********"
 echo "Install oracle Java 7 and 8"
 #sudo apt-get install -y oracle-java7-installer
 sudo apt-get install -y oracle-java8-installer
-
-echo "**********"
-echo "Add current user to docker group to allow sans-sudo usage"
-# add user to docker group so we can run docker as user (and not as sudo)
-set +e
-sudo groupadd docker
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
-set -e
 
 echo "**********"
 echo "Installing Eclipse..."
