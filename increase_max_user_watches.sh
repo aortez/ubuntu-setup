@@ -1,5 +1,5 @@
 #!/bin/bash
-# script to bump the number of max file watches
+# script to bump the number of max number of file watches
 # stuff like nodemon likes bigger numbers
 set -eou pipefail
 
