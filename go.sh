@@ -3,17 +3,16 @@ set -euo pipefail
 
 declare -a PPAS=(
 "ppa:webupd8team/java"
-"ppa:webupd8team/atom"
 )
 echo " "
 echo "***********"
 echo "Installing PPAs"
 for P in "${PPAS[@]}"
 do
-	echo "installing PPA: $P"
-	set -x
-	sudo add-apt-repository -y $P
-	set +x
+  echo "installing PPA: $P"
+  set -x
+  sudo add-apt-repository -y $P
+  set +x
 done
 
 echo "*********"
@@ -28,7 +27,6 @@ echo "Installing packages..."
 declare -a PACKAGES=(
 "alarm-clock-applet"
 "amarok"
-"atom"
 "build-essential"
 "compiz-plugins-extra"
 "compizconfig-settings-manager"
@@ -60,7 +58,7 @@ declare -a PACKAGES=(
 PACKAGES_STRING=""
 for P in "${PACKAGES[@]}"
 do
-    PACKAGES_STRING=("$PACKAGES_STRING $P")
+  PACKAGES_STRING=("$PACKAGES_STRING $P")
 done
 echo "list of packages: $PACKAGES_STRING"
 set -x
@@ -79,14 +77,14 @@ ECLIPSE_HOME=~/.progs/eclipse
 if [ -d "$ECLIPSE_HOME" ]; then
 	echo "Found existing directory at $ECLIPSE_HOME, eclipse already installed!"
 else
-	echo "fetching package and unarchiving"
-	mkdir -p tmp
-	cd tmp
-	wget -N http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/1a/eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
-	tar zxvf eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
-	echo "deploying to target directory"
-	mkdir -p ~/.progs/
-	mv eclipse ~/.progs/
+  echo "fetching package and unarchiving"
+  mkdir -p tmp
+  cd tmp
+  wget -N http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/1a/eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
+  tar zxvf eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
+  echo "deploying to target directory"
+  mkdir -p ~/.progs/
+  mv eclipse ~/.progs/
 fi
 
 
