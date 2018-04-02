@@ -1,0 +1,3 @@
+'atom-workspace atom-text-editor:not([mini])':
+  'ctrl-up': 'unset!'
+  'ctrl-down': 'unset!'
