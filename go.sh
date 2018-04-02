@@ -67,8 +67,7 @@ set +x
 
 echo " "
 echo "*********"
-echo "Install oracle Java 7 and 8"
-#sudo apt-get install -y oracle-java7-installer
+echo "Install oracle Java 8"
 sudo apt-get install -y oracle-java8-installer
 
 echo "**********"
