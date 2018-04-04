@@ -18,3 +18,7 @@ set -e
 cp atom_keymap.cson ~/.atom/keymap.cson
 
 echo "atom is now yours"
+
+# packages to install, automate eventually
+#apm install linter-eslint
+#apm install docblockr
