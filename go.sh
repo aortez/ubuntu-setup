@@ -28,6 +28,7 @@ declare -a PACKAGES=(
 "alarm-clock-applet"
 "amarok"
 "build-essential"
+"colordiff"
 "compiz-plugins-extra"
 "compizconfig-settings-manager"
 "curl"
