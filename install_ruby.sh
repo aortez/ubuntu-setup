@@ -11,5 +11,6 @@ cd /usr/local/bin
 sudo ln -s /usr/share/rvm/bin/rvm
 popd
 
+set +x
 echo "logout, login, then run:"
 echo "rvm install ruby"
