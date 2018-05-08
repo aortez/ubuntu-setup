@@ -20,7 +20,7 @@ sudo apt-key fingerprint 0EBFCD88
 echo "set up stable repo"
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
+   artful \# $(lsb_release -cs) \
    stable"
 sudo apt-get update
 
