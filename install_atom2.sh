@@ -16,3 +16,5 @@ set -x
 # packages to install
 apm install linter-eslint
 apm install docblockr
+apm install ide-typescript
+apm install atom-ide-ui
