@@ -1,8 +1,13 @@
 #!/bin/bash
 
 curl https://sh.rustup.rs -sSf | sh
+source $HOME/.cargo/env
 
-# need to source profile here...
+# update to beta
+rustup default beta
 
-cargo install wasm-pack
+# install wasm-pack
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh 
+
 cargo install cargo-generate
+
