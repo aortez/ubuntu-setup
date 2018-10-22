@@ -11,3 +11,5 @@ curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 cargo install cargo-generate
 
+# install rsl
+rustup component add rls-preview rust-analysis rust-src
