@@ -4,6 +4,13 @@
 
 set -euo pipefail
 
+# store docker data on data partition
+echo "Setting up symlink from /var/lib/docker to /home/data/docker."
+echo "This keeps that huge docker data off of the root partition."
+sudo mkdir -p /var/lib/docker
+sudo mv /var/lib/docker/ /home/data/
+sudo ln -s -T /home/data/docker/ /var/lib/docker
+
 echo "install packages to allow apt to access an https repo"
 sudo apt-get install -y \
     apt-transport-https \
