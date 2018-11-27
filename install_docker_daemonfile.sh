@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# fixes issue where DNS doesn't seem to be working in a docker container
+
+
 set -eu
 echo "just notes for now, please read"
 exit 1
