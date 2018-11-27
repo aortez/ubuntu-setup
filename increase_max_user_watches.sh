@@ -11,8 +11,8 @@ if grep --quiet $GUARD_STRING$ $SYSCTL_CONF; then
   echo "it is already set"
 else
   echo "setting max_user_watches to $NUM_WATCHES"
-	echo "fs.inotify.max_user_watches=$NUM_WATCHES #$GUARD_STRING" | sudo tee -a $SYSCTL_CONF && sudo sysctl -p
-	echo "have a nice day"
+  echo "fs.inotify.max_user_watches=$NUM_WATCHES #$GUARD_STRING" | sudo tee -a $SYSCTL_CONF && sudo sysctl -p
+  echo "have a nice day"
 fi
 
 RESULTING_NUM_WATCHES=`cat /proc/sys/fs/inotify/max_user_watches`
