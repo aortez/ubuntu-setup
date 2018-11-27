@@ -3,6 +3,8 @@ set -eu
 echo "just notes for now, please read"
 exit 1
 
+# script should auto-gen/clobber daemon file and restart docker service
+
 nmcli dev show | grep 'IP4.DNS'
 IP4.DNS[1]:              10.0.0.2
 IP4.DNS[2]:              10.0.0.3
