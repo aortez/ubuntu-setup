@@ -48,6 +48,7 @@ declare -a PACKAGES=(
 "multitail"
 "mysql-client-core-5.7"
 "nmon"
+"plantuml"  # TODO, probably want this in its own script so we can add the lib to the path
 "postgresql-client"
 "postgresql-common"
 "redis-tools"
