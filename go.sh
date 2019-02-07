@@ -52,7 +52,6 @@ declare -a PACKAGES=(
 "postgresql-common"
 "redis-tools"
 "ubuntu-restricted-extras"
-"shutter"
 "speedcrunch"
 "synaptic"
 "vim"
