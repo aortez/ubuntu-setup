@@ -15,9 +15,9 @@ cp atom_keymap.cson ~/.atom/keymap.cson
 set +x
 echo "Installing packages..."
 set -x
-apm install linter-eslint
-apm install linter-tslint
+apm install atom-ide-ui
 apm install docblockr
 apm install ide-typescript
 apm install atom-ide-ui
+apm install linter-eslint
 apm install plantuml-preview
