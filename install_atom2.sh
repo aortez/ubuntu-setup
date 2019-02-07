@@ -20,3 +20,4 @@ apm install linter-tslint
 apm install docblockr
 apm install ide-typescript
 apm install atom-ide-ui
+apm install plantuml-preview
