@@ -40,7 +40,7 @@ declare -a PACKAGES=(
 "gparted"
 "graphviz"
 "jq"
-"keepass2"
+"keepassx"
 "lxrandr"
 "meld"
 "maven"
