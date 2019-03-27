@@ -69,29 +69,6 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     xkb_options numpad:microsoft
 }
 
-### My stuff
-#
-    # Volume control
-    set $vol_up_cmd exec amixer -q set Master 5%+ unmute
-    set $vol_down_cmd exec amixer -q set Master 5%- unmute
-    set $vol_toggle_mute exec amixer -q -D pulse set Master toggle
-    bindsym XF86AudioRaiseVolume $vol_up_cmd
-    bindsym $mod+bracketright $vol_up_cmd
-    bindsym XF86AudioLowerVolume $vol_down_cmd
-    bindsym $mod+bracketleft $vol_down_cmd
-    bindsym $mod+backslash $vol_toggle_mute
-    bindsym XF86AudioMute $vol_toggle_mute
-    #
-    # Screen brightness
-    bindsym $mod+F7 exec brightnessctl set 5%-
-    bindsym $mod+F8 exec brightnessctl set +5%
-    #
-    # Key for renaming workspaces
-    # doesn't work yet.... :(
-#    bindsym $mod+t exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
-    set $get_mark echo | dmenu -p Mark: | xargs swaymsg mark
-    bindsym $mod+t exec $get_mark
-
 ### Key bindings
 #
 # Basics:
@@ -117,6 +94,31 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # Volume control
+    set $vol_up_cmd exec amixer -q set Master 5%+ unmute
+    set $vol_down_cmd exec amixer -q set Master 5%- unmute
+    set $vol_toggle_mute exec amixer -q -D pulse set Master toggle
+    bindsym XF86AudioRaiseVolume $vol_up_cmd
+    bindsym $mod+bracketright $vol_up_cmd
+    bindsym XF86AudioLowerVolume $vol_down_cmd
+    bindsym $mod+bracketleft $vol_down_cmd
+    bindsym $mod+backslash $vol_toggle_mute
+    bindsym XF86AudioMute $vol_toggle_mute
+    #
+    # Screen brightness
+    bindsym $mod+F7 exec brightnessctl set 5%-
+    bindsym $mod+F8 exec brightnessctl set +5%
+    #
+    # Key for renaming workspaces
+    # doesn't work yet.... :(
+#    bindsym $mod+t exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+    set $get_mark echo | dmenu -p Mark: | xargs swaymsg mark
+    bindsym $mod+t exec $get_mark
+
+    # screenshot
+    bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png
+
 #
 # Moving around:
 #
