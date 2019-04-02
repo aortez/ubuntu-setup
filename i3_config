@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# use windows key, since it isn't already used by most apps
 set $mod Mod4
 
 # shortcut for gnome-do
@@ -19,6 +20,12 @@ set $menu rofi -show drun | xargs swaymsg exec
 
 # network manager applet
 exec --no-startup-id nm-tray
+
+# screenshot fullscreen
+bindsym $mod+Print exec --no-startup-id shutter -f
+
+# screenshot area
+bindsym $mod+Shift+Print exec --no-startup-id shutter -s
 
 # volume applet
 exec --no-startup-id volumeicon
@@ -173,4 +180,4 @@ bar {
 }
 
 # lockscreen
-bindsym Control+$mod+l exec "i3lock -c 000000"
+bindsym Control+$mod+l exec "i3lock -c 000009"
