@@ -23,12 +23,25 @@ else
 fi
 
 echo "unarchiving"
- # remove target unarchive dir before unarchiving
+# remove target unarchive dir before unarchiving
 rm -rf ./eclipse
 tar zxf eclipse.tgz
 
 echo "deploying to target directory"
 mkdir -p $ECLIPSE_HOME_ROOT
 mv eclipse $ECLIPSE_HOME_ROOT
+
+echo "adding run script to /usr/local/bin/eclipse"
+cd /tmp
+
+cat > run_eclipse << EOF
+#!/bin/bash
+set -eu
+export GDK_BACKEND=x11
+$ECLIPSE_HOME/eclipse
+EOF
+
+chmod +x run_eclipse
+sudo mv run_eclipse /usr/local/bin/eclipse
 
 echo "Done installing Eclipse!"
