@@ -13,24 +13,36 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
-set $term mate-terminal  #urxvt
+# I like mate-terminal because it supports a hotkey to rename the tab
+set $term mate-terminal
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec
 set $menu rofi -show drun | xargs swaymsg exec
 
-# add network manager
+# Add gnome keyring daemon to handle secrets
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id export $(gnome-keyring-daemon -s)
+
+# add network manager applet
 exec --no-startup-id nm-tray
 
 # add volume applet
 exec --no-startup-id volumeicon
 
+# disable focus follows mouse
+focus_follows_mouse no
+
+#gaps outer 5
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/oldman/Pictures/jupiter_swirls.jpg fill
 #
 # Example configuration:
 #
@@ -93,7 +105,8 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     bindsym $mod+Shift+c reload
 
     # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    # customized so we can use the keyboard to select whether you want to exit or not
+    bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit sway session?") = "YES" ] && swaymsg exit'
 
     # Volume control
     set $vol_up_cmd exec amixer -q set Master 5%+ unmute
