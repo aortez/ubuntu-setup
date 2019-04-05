@@ -23,6 +23,7 @@ else
 fi
 
 echo "unarchiving"
+ # remove target unarchive dir before unarchiving
 rm -rf ./eclipse
 tar zxf eclipse.tgz
 
