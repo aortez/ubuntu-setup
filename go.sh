@@ -49,7 +49,7 @@ declare -a PACKAGES=(
 "multitail"
 "mysql-client-core-5.7"
 "nmon"
-"plantuml" 
+"plantuml"
 "postgresql-client"
 "postgresql-common"
 "redis-tools"
@@ -74,23 +74,6 @@ echo "Install oracle Java 8"
 sudo apt-get install -y oracle-java8-installer
 
 echo "**********"
-echo "Installing Eclipse..."
-ECLIPSE_HOME=~/.progs/eclipse
-if [ -d "$ECLIPSE_HOME" ]; then
-	echo "Found existing directory at $ECLIPSE_HOME, eclipse already installed!"
-else
-  echo "fetching package and unarchiving"
-  mkdir -p tmp
-  cd tmp
-  wget -N http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/1a/eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
-  tar zxvf eclipse-java-oxygen-1a-linux-gtk-x86_64.tar.gz
-  echo "deploying to target directory"
-  mkdir -p ~/.progs/
-  mv eclipse ~/.progs/
-fi
-
-
-echo "**********"
 echo "Setting some defaults..."
 #echo "make alt-right-drag resize windows"
 #gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
@@ -100,17 +83,6 @@ echo "Setting some defaults..."
 
 #echo "restore normal scrollbars"
 #gsettings set com.canonical.desktop.interface scrollbar-mode normal
-
-# set a bunch of nice window movement hotkeys
-#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-ne "['<Control><Super>KP_Page_Up']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-nw "['<Control><Super>KP_Home']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-se "['<Control><Super>KP_Page_Down']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-corner-sw "['<Control><Super>KP_End']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Control><Super>KP_Begin']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-side-n "['<Control><Super>KP_Up','<Control><Super>Up']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-side-s "['<Control><Super>KP_Down','<Control><Super>Down']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-side-w "['<Control><Super>KP_Left','<Control><Super>Left']"
-#gsettings set org.gnome.desktop.wm.keybindings move-to-side-e "['<Control><Super>KP_Right','<Control><Super>Right']"
 
 echo "Replace marco with compiz as the default window manager"
 gsettings set org.mate.session.required-components windowmanager compiz
