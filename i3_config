@@ -12,11 +12,8 @@
 # use windows key, since it isn't already used by most apps
 set $mod Mod4
 
-# shortcut for gnome-do
-bindsym $mod+space exec gnome-do
-
-# application launcher
-set $menu rofi -show drun | xargs swaymsg exec
+# shortcut for launcher
+bindsym $mod+space exec rofi -show drun | xargs swaymsg exec
 
 # network manager applet
 exec --no-startup-id nm-tray
@@ -29,6 +26,17 @@ bindsym $mod+Shift+Print exec --no-startup-id shutter -s
 
 # volume applet
 exec --no-startup-id volumeicon
+
+# Volume control
+set $vol_up_cmd exec amixer -q set Master 5%+ unmute
+set $vol_down_cmd exec amixer -q set Master 5%- unmute
+set $vol_toggle_mute exec amixer -q -D pulse set Master toggle
+bindsym XF86AudioRaiseVolume $vol_up_cmd
+bindsym $mod+bracketright $vol_up_cmd
+bindsym XF86AudioLowerVolume $vol_down_cmd
+bindsym $mod+bracketleft $vol_down_cmd
+bindsym $mod+backslash $vol_toggle_mute
+bindsym XF86AudioMute $vol_toggle_mute
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
