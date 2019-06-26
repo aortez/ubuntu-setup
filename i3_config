@@ -204,4 +204,4 @@ bar {
 }
 
 # lockscreen
-bindsym Control+$mod+l exec "i3lock -c 000009"
+bindsym Control+$mod+l exec "i3lock -c 000030"
