@@ -13,7 +13,10 @@
 set $mod Mod4
 
 # shortcut for launcher
-bindsym $mod+space exec rofi -show drun | xargs swaymsg exec
+bindsym $mod+space exec rofi -show drun
+
+# shortcut for task switcher
+#bindsym $mod+Control exec rofi -show
 
 # network manager applet
 exec --no-startup-id nm-tray
@@ -57,7 +60,6 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec mate-terminal
 
 # kill focused window
@@ -165,6 +167,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
+# I customized this as by default you have to use your mouse to click the confirmation, which is lame-o
 bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
 
 # resize window (you can also use the mouse for that)
@@ -201,4 +204,4 @@ bar {
 }
 
 # lockscreen
-bindsym Control+$mod+l exec "i3lock -c 000009"
+bindsym Control+$mod+l exec "i3lock -c 000030"
