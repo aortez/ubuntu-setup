@@ -130,7 +130,7 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     bindsym $mod+t exec $get_mark
 
     # screenshot
-    bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png
+    bindsym $mod+Print exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && xclip -selection clipboard -t image/png -i $IMG
 
 #
 # Moving around:
@@ -249,6 +249,12 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# swaybar might work nicely... I had some problems with getting apps to dock,
+# so will try again later
+#bar {
+#    swaybar_command waybar
+#}
 
 #
 # Status Bar:
