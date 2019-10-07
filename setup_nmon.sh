@@ -12,6 +12,6 @@ if grep --quiet -e "$GUARD_STRING" ~/.bashrc; then
   echo "it is already set"
 else
   echo "adding nmon alias"
-  echo "alias nmon=\"$NMON_ALIAS\" #$GUARD_STRING" > ~/.bashrc
+  echo "alias nmon=\"$NMON_ALIAS\" #$GUARD_STRING" >> ~/.bashrc
   echo "have a nice day"
 fi
