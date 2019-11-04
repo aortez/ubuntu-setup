@@ -4,7 +4,7 @@ set -euo pipefail
 
 ECLIPSE_HOME_ROOT=~/.progs/
 ECLIPSE_HOME=$ECLIPSE_HOME_ROOT/eclipse
-PACKAGE_URL=http://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-cpp-2019-03-R-linux-gtk-x86_64.tar.gz
+PACKAGE_URL=http://mirrors.syringanetworks.net/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-cpp-2019-09-R-linux-gtk-x86_64.tar.gz
 
 echo "Installing Eclipse..."
 
