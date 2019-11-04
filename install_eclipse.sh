@@ -15,7 +15,9 @@ if [ -d "$ECLIPSE_HOME" ]; then
 fi
 
 echo "fetching package"
-cd /tmp
+mkdir -p tmp
+pushd .
+cd tmp
 if [ -f ./eclipse.tgz ]; then
     echo "package already downloaded"
 else
@@ -32,7 +34,6 @@ mkdir -p $ECLIPSE_HOME_ROOT
 mv eclipse $ECLIPSE_HOME_ROOT
 
 echo "adding run script to /usr/local/bin/eclipse"
-cd /tmp
 
 cat > run_eclipse << EOF
 #!/bin/bash
@@ -43,5 +44,6 @@ EOF
 
 chmod +x run_eclipse
 sudo mv run_eclipse /usr/local/bin/eclipse
+popd
 
 echo "Done installing Eclipse!"
