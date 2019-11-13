@@ -185,9 +185,6 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     # We just use 1-10 as the default.
     #
 
-# Assign programs to workspaces
-assign [class="(?i)firefox"] 1:web
-
 #
 # Layout stuff:
 #
