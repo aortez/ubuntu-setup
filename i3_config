@@ -158,10 +158,6 @@ workspace 8 output DP-2
 workspace 9 output DP-2
 workspace 0 output DP-2
 
-# Assign programs to workspaces
-assign [class="(?i)firefox"] 1:web
-assign [class="(?i)vlc"] 10:music
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
