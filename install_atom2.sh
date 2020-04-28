@@ -20,4 +20,4 @@ apm install docblockr
 apm install ide-typescript
 apm install atom-ide-ui
 apm install linter-eslint
-apm install plantuml-preview
+apm install plantuml-preview; sudo apt install plantuml
