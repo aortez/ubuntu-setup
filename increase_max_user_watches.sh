@@ -4,7 +4,7 @@
 set -eou pipefail
 
 SYSCTL_CONF=/etc/sysctl.conf
-NUM_WATCHES=65536
+NUM_WATCHES=524288
 GUARD_STRING="set_max_user_watches"
 
 if grep --quiet $GUARD_STRING$ $SYSCTL_CONF; then
