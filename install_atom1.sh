@@ -4,7 +4,8 @@ set -euo pipefail
 echo "Installing Atom"
 echo "Installing ppa..."
 set -x
-sudo add-apt-repository -y "ppa:webupd8team/atom"
+wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 set +x
 sudo apt-get update
 
