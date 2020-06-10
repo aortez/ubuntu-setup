@@ -4,7 +4,7 @@
 # store them in a data partition (this way the OS can be reinstalled without
 # messing with your data).
 # So let's store all those docker images and whatnot on the data partition.
-set -euo pipefail
+set -euxo pipefail
 
 echo "stopping docker service"
 sudo service docker stop
