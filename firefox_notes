@@ -1,0 +1,15 @@
+# just some notes about how to configure firefox...
+
+# Disable Automatic Updates
+# I am often working on many things at once and have a lot of services signed into and whatnot
+# in my browser, so it really sucks when FF gives me a forced update and restart, but fails to 
+# restore my previous session. So, disabling automatic updates might help here...
+
+set app.update.auto = false
+
+This site says this will change the behavior from automatic to prompted, which sounds fucking
+awesome:
+http://kb.mozillazine.org/App.update.auto
+
+So we'll see if it still works that way, hopefully!
+
