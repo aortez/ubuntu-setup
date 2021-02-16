@@ -15,23 +15,30 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-# I like mate-terminal because it supports a hotkey to rename the tab
-set $term mate-terminal
+set $term mate-terminal  #urxvt
+#set $term kitty  #urxvt
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec
 set $menu rofi -show drun | xargs swaymsg exec
 
-# Add gnome keyring daemon to handle secrets
+# please work
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id export $(gnome-keyring-daemon -s)
 
 # add network manager applet
-exec --no-startup-id nm-tray
+#exec --no-startup-id nm-tray
+#exec --no-startup-id nm-applet --indicator
+
+# setup notifications
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Shift+n exec makoctl dismiss -a
+exec mako --default-timeout 5000 --ignore-timeout 1
 
 # add volume applet
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
+#exec --no-startup-id pasystray
 
 # disable focus follows mouse
 focus_follows_mouse no
@@ -42,7 +49,7 @@ focus_follows_mouse no
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/oldman/Pictures/jupiter_swirls.jpg fill
+output * bg /home/oldman/Photos/jupiter_swirls.jpg fill
 #
 # Example configuration:
 #
@@ -79,6 +86,10 @@ output * bg /home/oldman/Pictures/jupiter_swirls.jpg fill
 # Read `man 5 sway-input` for more information about this section.
 input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     xkb_options numpad:microsoft
+}
+
+input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
+    events disabled_on_external_mouse
 }
 
 ### Key bindings
@@ -130,7 +141,7 @@ input "2821:6246:ASUSTeK_Computer_Inc._N-KEY_Device" {
     bindsym $mod+t exec $get_mark
 
     # screenshot
-    bindsym $mod+Print exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && xclip -selection clipboard -t image/png -i $IMG
+    bindsym $mod+Print exec IMG=~/Photos/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
 
 #
 # Moving around:
@@ -247,29 +258,28 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# swaybar might work nicely... I had some problems with getting apps to dock,
-# so will try again later
-#bar {
-#    swaybar_command waybar
-#}
+bar {
+    swaybar_command waybar
+}
+
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    height 24
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    status_command i3status
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
-
+#bar {
+#    position top
+#    height 24
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+##    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+#    status_command i3status
+#
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
+#
 include /etc/sway/config.d/*
