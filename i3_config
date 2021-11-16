@@ -9,11 +9,20 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Start the gtk settings daemon
+exec --no-startup-id mate-settings-daemon
+
+# Set X DPI.
+exec xrandr --dpi 80
+
+# Start notifications daemon.
+exec --no-startup-id dunst
+
 # use windows key, since it isn't already used by most apps
 set $mod Mod4
 
 # shortcut for launcher
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+space exec rofi -font "hack 24" -show drun
 
 # shortcut for task switcher
 #bindsym $mod+Control exec rofi -show
@@ -25,6 +34,7 @@ exec --no-startup-id nm-tray
 bindsym $mod+Print exec --no-startup-id shutter -f
 
 # screenshot area
+# TODO FIXME
 bindsym $mod+Shift+Print exec --no-startup-id shutter -s
 
 # volume applet
@@ -41,16 +51,26 @@ bindsym $mod+bracketleft $vol_down_cmd
 bindsym $mod+backslash $vol_toggle_mute
 bindsym XF86AudioMute $vol_toggle_mute
 
+# Brightness control...
+set $brightness_up_cmd exec light -s "sysfs/backlight/acpi_video0" -A 10
+set $brightness_down_cmd exec light -s "sysfs/backlight/acpi_video0" -U 10
+bindsym XF86MonBrightnessUp $brightness_up_cmd
+bindsym XF86MonBrightnessDown $brightness_down_cmd
+bindsym $mod+Shift+bracketleft $brightness_down_cmd
+bindsym $mod+Shift+bracketright $brightness_up_cmd
+# Reset to a reasonable middle brightness.
+bindsym $mod+Shift+backslash exec light -s "sysfs/backlight/acpi_video0" -S 60
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 22
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 22
 
 # Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
