@@ -1,3 +1,6 @@
+# Restore Ambient theme on 22.04:
+https://github.com/lah7/Ambiant-MATE-Colours
+
 # move buttons to right
 gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 
