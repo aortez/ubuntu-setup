@@ -7,6 +7,7 @@ sudo apt install \
 	grim \
 	sway \
 	mako-notifier \
+	slurp \
 	waybar \
 	wl-clipboard \
 	xclip
