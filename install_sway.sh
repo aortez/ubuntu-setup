@@ -2,7 +2,9 @@
 # installs sway and packages
 set -eux
 
-sudo apt install grim \
+sudo apt install \
+	bemenu \
+	grim \
 	sway \
 	mako-notifier \
 	waybar \

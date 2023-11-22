@@ -21,7 +21,8 @@ set $term mate-terminal  #urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec
-set $menu rofi -show drun | xargs swaymsg exec
+#set $menu rofi -show drun | xargs swaymsg exec
+set $menu fuzzel | xargs swaymsg exec
 
 # please work
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
@@ -117,7 +118,7 @@ input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
 
     # exit sway (logs you out of your Wayland session)
     # customized so we can use the keyboard to select whether you want to exit or not
-    bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit sway session?") = "YES" ] && swaymsg exit'
+    bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | bemenu-run -sb "#ff6600" -i -p "Really exit sway session?") = "YES" ] && swaymsg exit'
 
     # Volume control
     set $vol_up_cmd exec amixer -q set Master 5%+ unmute
@@ -137,7 +138,7 @@ input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
     # Key for renaming workspaces
     # doesn't work yet.... :(
 #    bindsym $mod+t exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
-    set $get_mark echo | dmenu -p Mark: | xargs swaymsg mark
+    set $get_mark echo | bemenu-run -p Mark: | xargs swaymsg mark
     bindsym $mod+t exec $get_mark
 
     # screenshot
