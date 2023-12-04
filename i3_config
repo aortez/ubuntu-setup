@@ -41,8 +41,8 @@ bindsym $mod+Shift+Print exec --no-startup-id shutter -s
 exec --no-startup-id volumeicon
 
 # Volume control
-set $vol_up_cmd exec amixer -q set Master 5%+ unmute
-set $vol_down_cmd exec amixer -q set Master 5%- unmute
+set $vol_up_cmd exec amixer -q -D pulse set Master 5%+ unmute
+set $vol_down_cmd exec amixer -q -D pulse set Master 5%- unmute
 set $vol_toggle_mute exec amixer -q -D pulse set Master toggle
 bindsym XF86AudioRaiseVolume $vol_up_cmd
 bindsym $mod+bracketright $vol_up_cmd
