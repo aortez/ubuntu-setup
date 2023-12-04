@@ -1,3 +1,7 @@
+# Start chrome in sway, needs options:
+-enable-features=UseOzonePlatform -ozone-platform=wayland
+# edit desktop entry in ~/.local/share/applications
+
 # Restore Ambient theme on 22.04:
 https://github.com/lah7/Ambiant-MATE-Colours
 
