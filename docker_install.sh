@@ -7,7 +7,7 @@
 set -euo pipefail
 
 echo "install docker package"
-sudo apt-get install -y docker.io
+sudo apt install -y docker.io
 
 echo "Add current user to docker group to allow sans-sudo usage"
 set +e
