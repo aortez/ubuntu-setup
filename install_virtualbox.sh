@@ -16,8 +16,8 @@ sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtual
 # Install via File -> Preferences -> Extensions -> add
 
 # Add user to vboxusers group
-# sudo usermod -aG vboxusers <USERNAME>
+sudo usermod -aG vboxusers $USER
 
 # install guest additions...
 # Here is an example version - modify for whatever the version you are using is
-https://download.virtualbox.org/virtualbox/6.1.14/VBoxGuestAdditions_6.1.14.iso
+https://download.virtualbox.org/virtualbox/7.0.16/VBoxGuestAdditions_7.0.16.iso
