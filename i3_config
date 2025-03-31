@@ -12,8 +12,10 @@
 # Start the gtk settings daemon
 exec --no-startup-id mate-settings-daemon
 
-# Set X DPI.
-exec xrandr --dpi 80
+#exec xrandr --dpi 80
+
+# keyring!
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 
 # Start notifications daemon.
 exec --no-startup-id dunst
@@ -22,7 +24,7 @@ exec --no-startup-id dunst
 set $mod Mod4
 
 # shortcut for launcher
-bindsym $mod+space exec rofi -font "hack 12" -show drun
+bindsym $mod+space exec rofi -show drun
 
 # shortcut for task switcher
 #bindsym $mod+Control exec rofi -show
@@ -34,16 +36,15 @@ exec --no-startup-id nm-tray
 bindsym $mod+Print exec --no-startup-id shutter -f
 
 # screenshot area
-# TODO FIXME
 bindsym $mod+Shift+Print exec --no-startup-id shutter -s
 
 # volume applet
 exec --no-startup-id volumeicon
-
+#
 # Volume control
-set $vol_up_cmd exec amixer -q -D pulse set Master 5%+ unmute
-set $vol_down_cmd exec amixer -q -D pulse set Master 5%- unmute
-set $vol_toggle_mute exec amixer -q -D pulse set Master toggle
+set $vol_up_cmd exec pulsemixer --change-volume +1
+set $vol_down_cmd exec pulsemixer --change-volume -1
+set $vol_toggle_mute exec pulsemixer --toggle-mute
 bindsym XF86AudioRaiseVolume $vol_up_cmd
 bindsym $mod+bracketright $vol_up_cmd
 bindsym XF86AudioLowerVolume $vol_down_cmd
@@ -70,7 +71,7 @@ font pango:monospace 12
 font pango:DejaVu Sans Mono 12
 
 # Before i3 v4.8, we used to recommend this one as the default:
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
@@ -167,20 +168,20 @@ bindsym $mod+Shift+0 move container to workspace 10:music
 
 # assign workspaces to monitors
 # this is only going to be good if your system has the same monitors as mine....
-workspace "1:web" output DisplayPort-0
-workspace 2 output DisplayPort-0
-workspace 3 output DisplayPort-0
-workspace 4 output DisplayPort-0
-workspace 5 output DVI-0
-workspace 6 output DVI-0
-workspace 7 output DVI-0
-workspace 8 output DVI-0
-workspace 9 output DVI-0
-workspace 0 output DVI-0
+workspace "1:web" output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output DP-1
+workspace 5 output DP-1
+workspace 6 output DP-2
+workspace 7 output DP-2
+workspace 8 output DP-2
+workspace 9 output DP-2
+workspace 0 output DP-2
 
-# Move workspace to different monitor.
-bindsym $mod+Ctrl+greater move workspace to output right
-bindsym $mod+Ctrl+less move workspace to output left
+# Assign programs to workspaces
+assign [class="(?i)firefox"] 1:web
+assign [class="(?i)vlc"] 10:music
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -198,16 +199,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -222,6 +223,9 @@ bar {
         position top
         status_command i3status
 }
+
+# Set screensaver timeout to 20 minutes.
+exec_always xset s 1200
 
 # lockscreen
 bindsym Control+$mod+l exec "i3lock -c 000030"
