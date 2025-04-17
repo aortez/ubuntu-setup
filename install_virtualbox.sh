@@ -18,6 +18,9 @@ sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtual
 # Add user to vboxusers group
 sudo usermod -aG vboxusers $USER
 
+# Add user to group for shared filesystem
+sudo usermod -aG vboxsf $USER
+
 # install guest additions...
 # Here is an example version - modify for whatever the version you are using is
 https://download.virtualbox.org/virtualbox/7.0.16/VBoxGuestAdditions_7.0.16.iso
