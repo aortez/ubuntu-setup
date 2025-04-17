@@ -2,7 +2,7 @@
 set -euo pipefail
 
 declare -a PPAS=(
-"ppa:webupd8team/java"
+#"ppa:webupd8team/java"
 )
 echo " "
 echo "***********"
@@ -11,7 +11,7 @@ for P in "${PPAS[@]}"
 do
   echo "installing PPA: $P"
   set -x
-  sudo add-apt-repository -y $P
+#  sudo add-apt-repository -y $P
   set +x
 done
 
@@ -26,7 +26,6 @@ echo "Installing packages..."
 
 declare -a PACKAGES=(
 "alarm-clock-applet"
-"amarok"
 "build-essential"
 "colordiff"
 "compiz-plugins-extra"
@@ -36,7 +35,6 @@ declare -a PACKAGES=(
 "git"
 "gitk"
 "gimp"
-"gnome-do"
 "gparted"
 "graphviz"
 "jq"
@@ -47,12 +45,8 @@ declare -a PACKAGES=(
 "moreutils"
 "mpg321"
 "multitail"
-"mysql-client-core-5.7"
 "nmon"
 "plantuml"
-"postgresql-client"
-"postgresql-common"
-"redis-tools"
 "ubuntu-restricted-extras"
 "speedcrunch"
 "synaptic"
@@ -67,11 +61,6 @@ echo "list of packages: $PACKAGES_STRING"
 set -x
 sudo apt-get install -y $PACKAGES_STRING
 set +x
-
-echo " "
-echo "*********"
-echo "Install oracle Java 8"
-sudo apt-get install -y oracle-java8-installer
 
 echo "**********"
 echo "Setting some defaults..."
