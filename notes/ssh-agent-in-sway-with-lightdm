@@ -1,0 +1,59 @@
+  Key Issues & Solutions
+
+  1. gpg-agent conflicts with gnome-keyring
+  - By default, gpg-agent-ssh.socket provides SSH agent functionality
+  - It conflicts with gnome-keyring's SSH agent
+  - Solution: Mask it permanently:
+  systemctl --user mask gpg-agent-ssh.socket
+
+  2. gnome-keyring systemd service missing SSH component
+  - The default systemd service only starts pkcs11,secrets components
+  - Solution: Create override at ~/.config/systemd/user/gnome-keyring-daemon.service.d/ssh.conf:
+  [Service]
+  ExecStart=
+  ExecStart=/usr/bin/gnome-keyring-daemon --foreground --components=pkcs11,secrets,ssh --control-directory=/run/user/%U/keyring
+
+  3. SSH_AUTH_SOCK not exported to terminals
+  - Even though the socket exists, terminals don't inherit the variable
+  - Solution: Add to ~/.bashrc:
+  export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+
+  4. Sway doesn't process XDG autostart files
+  - Unlike GNOME/MATE, sway doesn't auto-start apps from /etc/xdg/autostart/
+  - Solution: Add dex to sway config:
+  exec dex --autostart --environment sway
+
+  5. Duplicate polkit agents
+  - Both dex (via autostart) and sway config were launching lxpolkit
+  - Solution: Remove exec lxpolkit from sway config, let dex handle it
+
+  6. Waybar duplicates on reload
+  - Reloading sway doesn't kill old waybar instances
+  - Solution: Modify reload keybind:
+  bindsym $mod+Shift+c exec killall waybar; reload
+
+  Files Created/Modified
+
+  1. ~/.config/systemd/user/gnome-keyring-daemon.service.d/ssh.conf - SSH component override
+  2. ~/.bashrc - Export SSH_AUTH_SOCK
+  3. ~/.config/sway/config - Add dex, remove lxpolkit, fix reload
+  4. ~/.config/autostart/gnome-keyring-ssh.desktop - XDG autostart override (though dex may not need this if the systemd override works)
+  5. Masked: gpg-agent-ssh.socket
+
+  PAM (already configured)
+
+  - /etc/pam.d/lightdm already has pam_gnome_keyring.so configured
+  - This unlocks the keyring automatically at login if keyring password matches login password
+
+  To Replicate on Another Machine
+
+  1. Mask gpg-agent SSH socket
+  2. Create gnome-keyring systemd override
+  3. Add SSH_AUTH_SOCK export to bashrc
+  4. Update sway config with dex and remove duplicate lxpolkit
+  5. Fix reload keybind to kill waybar
+  6. After first login, run ssh-add ~/.ssh/id_ed25519 once
+
+  The big lesson: Modern Linux has multiple SSH agent providers that can conflict (gpg-agent, gnome-keyring, ssh-agent). You have to explicitly choose one and disable
+   the others.
+
