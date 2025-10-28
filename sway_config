@@ -4,7 +4,14 @@
 
 include /etc/sway/config-vars.d/*
 
-exec lxpolkit
+# Process XDG autostart files (including gnome-keyring-ssh and lxpolkit).
+exec dex --autostart --environment sway
+
+# Set SSH_AUTH_SOCK for gnome-keyring's SSH agent.
+exec_always systemctl --user set-environment SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+exec_always systemctl --user import-environment SSH_AUTH_SOCK
+# Export to sway's environment so terminals inherit it.
+exec_always export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
 ### Variables
 #
@@ -26,7 +33,7 @@ set $term mate-terminal
 set $menu exec wofi --font "hack 12" --show drun
 
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
-exec --no-startup-id export $(gnome-keyring-daemon -s)
+# gnome-keyring is started by start_sway.sh before sway launches.
 
 # disable focus follows mouse
 focus_follows_mouse no

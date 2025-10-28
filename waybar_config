@@ -1,0 +1,122 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+
+    "modules-center": [
+        "sway/window"
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "network",
+        "temperature",
+        "disk",
+        "pulseaudio",
+        "clock",
+        "tray"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "sway/window": {
+        "max-length": 80
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15} {usage:>2}%",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "on-click": "mate-terminal -e htop",
+        "tooltip": true
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": " {percentage:>2}% ({used:0.1f}G/{total:0.1f}G)",
+        "on-click": "mate-terminal -e htop",
+        "tooltip": true,
+        "tooltip-format": "RAM: {used:0.2f}G used / {avail:0.2f}G available\nSwap: {swapUsed:0.2f}G / {swapTotal:0.2f}G"
+    },
+
+    "network": {
+        "interval": 2,
+        "format-wifi": " {essid} ({signalStrength}%)  {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": " {ipaddr}  {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\nGateway: {gwaddr}\n {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\nGateway: {gwaddr}\n {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "min-length": 35,
+        "align": 0
+    },
+
+    "temperature": {
+        "interval": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": true
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}% ({free} free)",
+        "path": "/",
+        "tooltip": true,
+        "tooltip-format": "{path}\n{used} used / {total} total\n{free} available ({percentage_free}% free)"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": true,
+        "tooltip-format": "{desc}\nVolume: {volume}%"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%A, %B %d, %Y}"
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}
