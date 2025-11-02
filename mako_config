@@ -1,0 +1,24 @@
+# Mako notification daemon configuration
+
+# Size and positioning
+width=400
+height=150
+margin=10
+padding=15
+
+# Font
+font=Hack 14
+
+# Colors (dark theme)
+background-color=#2b2b2b
+text-color=#ffffff
+border-color=#ff6600
+border-size=3
+
+# Behavior
+default-timeout=5000
+ignore-timeout=1
+
+# Icons
+icons=1
+max-icon-size=64
