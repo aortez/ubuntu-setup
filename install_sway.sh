@@ -5,9 +5,10 @@ set -eux
 sudo apt install \
 	bemenu \
 	grim \
-	sway \
+	kitty \
 	mako-notifier \
 	slurp \
+	sway \
 	waybar \
 	wl-clipboard \
 	xclip
@@ -21,10 +22,12 @@ sudo aa-disable /etc/apparmor.d/fr.emersion.Mako
 
 # Copy configuration files.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/mako
 mkdir -p ~/.config/sway
 mkdir -p ~/.config/waybar
-mkdir -p ~/.config/mako
+cp "$SCRIPT_DIR/kitty.conf" ~/.config/kitty/kitty.conf
+cp "$SCRIPT_DIR/mako_config" ~/.config/mako/config
 cp "$SCRIPT_DIR/sway_config" ~/.config/sway/config
 cp "$SCRIPT_DIR/waybar_config" ~/.config/waybar/config
 cp "$SCRIPT_DIR/waybar_style.css" ~/.config/waybar/style.css
-cp "$SCRIPT_DIR/mako_config" ~/.config/mako/config
