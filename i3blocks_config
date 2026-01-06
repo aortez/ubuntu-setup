@@ -1,0 +1,40 @@
+# i3blocks configuration file
+# See man i3blocks for documentation
+
+# Global properties
+separator_block_width=15
+markup=pango
+align=center
+color=#FFFFFF
+
+# Per-CPU usage bars (similar to waybar)
+[cpu_usage]
+command=~/.config/i3blocks/scripts/i3blocks_cpu_usage_script.sh
+interval=1
+separator=false
+
+# Memory
+[memory]
+command=echo " $(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
+interval=5
+
+# Disk
+[disk]
+command=echo " $(df -h / | awk 'NR==2 {print $4 " free"}')"
+interval=30
+
+# Network
+[network]
+command=~/.config/i3blocks/scripts/i3blocks_network_script.sh
+interval=2
+
+# Volume
+[volume]
+command=pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -1 | xargs -I {} echo "♪: {}%"
+interval=1
+signal=10
+
+# Time and Date
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
