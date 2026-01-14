@@ -82,14 +82,19 @@ button:hover {
     border-radius: 4px;
 }
 
-#cpu {
+#cpu,
+#custom-cpu {
     background-color: rgba(137, 220, 235, 0.15);
     color: #89dceb;
     font-family: monospace;
-    font-size: 12px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 0 16px;
+    min-width: 200px;
 }
 
-#cpu:hover {
+#cpu:hover,
+#custom-cpu:hover {
     background-color: rgba(137, 220, 235, 0.3);
 }
 

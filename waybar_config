@@ -15,7 +15,7 @@
     ],
 
     "modules-right": [
-        "cpu",
+        "custom/cpu",
         "memory",
         "network",
         "temperature",
@@ -46,18 +46,17 @@
         "max-length": 80
     },
 
-    "cpu": {
+    "custom/cpu": {
+        "exec": "/home/oldman/.config/waybar/scripts/cpu_cores.sh",
+        "return-type": "json",
         "interval": 1,
-        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15} {usage:>2}%",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "on-click": "mate-terminal -e htop",
-        "tooltip": true
+        "on-click": "kitty htop"
     },
 
     "memory": {
         "interval": 5,
         "format": " {percentage:>2}% ({used:0.1f}G/{total:0.1f}G)",
-        "on-click": "mate-terminal -e htop",
+        "on-click": "kitty htop",
         "tooltip": true,
         "tooltip-format": "RAM: {used:0.2f}G used / {avail:0.2f}G available\nSwap: {swapUsed:0.2f}G / {swapTotal:0.2f}G"
     },
