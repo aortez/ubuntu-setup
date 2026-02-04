@@ -43,7 +43,7 @@ bindsym $mod+Shift+n exec makoctl dismiss -a
 exec mako --default-timeout 5000 --ignore-timeout 1
 
 # Screenshots
-bindsym $mod+Print exec IMG=~/Photos/$(date +%Y-%m-%d_%H-%M-%S).png && grim -g "$(slurp)" $IMG && wl-copy -t image/png < $IMG
+bindsym $mod+Print exec mkdir -p ~/Photos && IMG=~/Photos/$(date +%Y-%m-%d_%H-%M-%S).png && grim -g "$(slurp)" $IMG && wl-copy -t image/png < $IMG
 
 ### Key bindings
 #
