@@ -34,6 +34,11 @@ command=pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -1 | x
 interval=1
 signal=10
 
+# Battery
+[battery]
+command=acpi -b | grep -Po '\d+%' | head -1 | xargs -I {} echo "🔋 {}"
+interval=30
+
 # Time and Date
 [time]
 command=date '+%Y-%m-%d %H:%M:%S'
