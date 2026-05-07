@@ -12,7 +12,10 @@
 # Start the gtk settings daemon
 exec --no-startup-id mate-settings-daemon
 
-#exec xrandr --dpi 80
+# Display layout: external (HDMI-0) to the left of the HiDPI laptop panel (DP-4),
+# scaled 2x2 so UI sizing roughly matches the 4K laptop. Positions are explicit because
+# xrandr's --left-of uses pre-scale width and would overlap the outputs.
+exec_always --no-startup-id sh -c 'if xrandr | grep -q "^HDMI-0 connected"; then xrandr --output HDMI-0 --scale 2x2 --pos 0x0 --output DP-4 --pos 3840x0; else xrandr --output DP-4 --scale 1x1 --pos 0x0; fi; echo "Xft.dpi: 192" | xrdb -merge'
 
 # keyring!
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
@@ -165,6 +168,10 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10:music
+
+# move workspace to monitor left/right
+bindsym $mod+Ctrl+less move workspace to output left
+bindsym $mod+Ctrl+greater move workspace to output right
 
 # assign workspaces to monitors
 # this is only going to be good if your system has the same monitors as mine....
